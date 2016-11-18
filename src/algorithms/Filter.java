@@ -64,7 +64,81 @@ public class Filter {
 		}
 	}
 
-	// 隐伏五八度
+	// public void augFourthFilterToPrev(List<int[]> rawChords, int[] prevChord)
+	// {
+	//
+	// for (int i = 0; i < rawChords.size(); i++) {
+	//
+	// int[] currChord = rawChords.get(i);
+	// if (Math.abs(currChord[3] - prevChord[3]) == 6) {
+	//
+	// }
+	// }
+	//
+	// }
+	//
+	// public void augFourthFilterToNext(List<int[]> rawChords, int[] nextChord)
+	// {
+	//
+	// }
+
+	// 外声部隐伏五八度
+	// 两个外声部同方向进行到8度或5度，高音部一跳进，就错
+	public void exteriorHiddenParralelFilterToPrev(List<int[]> rawChords, int[] prevChord) {
+
+		for (int i = 0; i < rawChords.size(); i++) {
+
+			int[] currChord = rawChords.get(i);
+
+			// If not 5th/8th
+			if (!((currChord[3] - currChord[0] == 7) || (currChord[3] - currChord[0] == 12))) {
+				continue;
+			}
+
+			// 同向
+			if (!((currChord[0] - prevChord[0] < 0) && (currChord[3] - prevChord[3] < 0)
+					|| (currChord[0] - prevChord[0] > 0) && (currChord[3] - prevChord[3] > 0))) {
+				continue;
+			}
+
+			// 高音跳进
+			if (!(Math.abs(currChord[3] - prevChord[3]) > 3)) {
+				continue;
+			}
+
+			rawChords.remove(i);
+			i--;
+
+		}
+		return;
+	}
+
+	public void exteriorHiddenParralelFilterToNext(List<int[]> rawChords, int[] nextChord) {
+
+		// If not 5th/8th
+		if (!((nextChord[3] - nextChord[0] == 7) || (nextChord[3] - nextChord[0] == 12))) {
+			return;
+		}
+
+		for (int i = 0; i < rawChords.size(); i++) {
+
+			int[] currChord = rawChords.get(i);
+
+			// 同向
+			if (!((currChord[0] - nextChord[0] < 0) && (currChord[3] - nextChord[3] < 0)
+					|| (currChord[0] - nextChord[0] > 0) && (currChord[3] - nextChord[3] > 0))) {
+				continue;
+			}
+
+			// 高音跳进
+			if (!(Math.abs(currChord[3] - nextChord[3]) > 3)) {
+				continue;
+			}
+			rawChords.remove(i);
+			i--;
+		}
+		return;
+	}
 
 	// Concurrent
 	public void concurrentFilter(List<int[]> rawChords, int[] prevChord) {
