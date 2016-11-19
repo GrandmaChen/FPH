@@ -64,24 +64,6 @@ public class Filter {
 		}
 	}
 
-	// public void augFourthFilterToPrev(List<int[]> rawChords, int[] prevChord)
-	// {
-	//
-	// for (int i = 0; i < rawChords.size(); i++) {
-	//
-	// int[] currChord = rawChords.get(i);
-	// if (Math.abs(currChord[3] - prevChord[3]) == 6) {
-	//
-	// }
-	// }
-	//
-	// }
-	//
-	// public void augFourthFilterToNext(List<int[]> rawChords, int[] nextChord)
-	// {
-	//
-	// }
-
 	// 外声部隐伏五八度
 	// 两个外声部同方向进行到8度或5度，高音部一跳进，就错
 	public void exteriorHiddenParralelFilterToPrev(List<int[]> rawChords, int[] prevChord) {
