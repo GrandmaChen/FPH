@@ -46,7 +46,7 @@ public class Filter {
 		return parralel;
 	}
 
-	public void noJump(List<int[]> rawChords, int[] prevChord) {
+	public void JumpFilter(List<int[]> rawChords, int[] prevChord) {
 
 		for (int i = 0; i < rawChords.size(); i++) {
 			int[] currChord = rawChords.get(i);
@@ -62,6 +62,58 @@ public class Filter {
 				i--;
 			}
 		}
+	}
+
+	public void preDecidedBassFilter(List<int[]> rawChords, int bass) {
+
+		for (int i = 0; i < rawChords.size(); i++) {
+
+			int[] currChord = rawChords.get(i);
+			if (currChord[0] != bass) {
+				rawChords.remove(i);
+				i--;
+			}
+		}
+		return;
+	}
+
+	public void preDecidedTenorFilter(List<int[]> rawChords, int tenor) {
+
+		for (int i = 0; i < rawChords.size(); i++) {
+
+			int[] currChord = rawChords.get(i);
+			if (currChord[1] != tenor) {
+				rawChords.remove(i);
+				i--;
+			}
+		}
+		return;
+	}
+
+	public void preDecidedAltoFilter(List<int[]> rawChords, int alto) {
+
+		for (int i = 0; i < rawChords.size(); i++) {
+
+			int[] currChord = rawChords.get(i);
+			if (currChord[2] != alto) {
+				rawChords.remove(i);
+				i--;
+			}
+		}
+		return;
+	}
+
+	public void preDecidedSopranoFilter(List<int[]> rawChords, int soprano) {
+
+		for (int i = 0; i < rawChords.size(); i++) {
+
+			int[] currChord = rawChords.get(i);
+			if (currChord[3] != soprano) {
+				rawChords.remove(i);
+				i--;
+			}
+		}
+		return;
 	}
 
 	// 外声部隐伏五八度
