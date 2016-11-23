@@ -46,6 +46,36 @@ public class Filter {
 		return parralel;
 	}
 
+//	public void mostCommonNotes(List<int[]> rawChords, int[] prevChord) {
+//
+//		int[] temp = new int[rawChords.size()];
+//		for (int i = 0; i < temp.length; i++) {
+//			temp[i] = 0;
+//		}
+//		int count = 0;
+//		for (ConcreteChord cc : rawChords) {
+//			for (int i = 0; i < 4; i++) {
+//				for (int j = 0; j < 4; j++) {
+//					if (cc.getNotes(i) == prevChord[j]) {
+//						temp[count]++;
+//					}
+//				}
+//			}
+//		}
+//
+//		int index = 0;
+//		int max = temp[0];
+//		for (int i = 0; i < temp.length; i++) {
+//			if (temp[i] > max) {
+//				max = temp[i];
+//				index = i;
+//			}
+//		}
+//
+//		return rawChords.get(index);
+//
+//	}
+	
 	public void JumpFilter(List<int[]> rawChords, int[] prevChord) {
 
 		for (int i = 0; i < rawChords.size(); i++) {

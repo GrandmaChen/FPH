@@ -11,8 +11,6 @@ public class FourPartHarmony {
 	public FourPartHarmony() {
 	}
 
-	
-	
 	// // This function is to get the least movement concreteChord from the
 	// // previous given concreteChord, which should be used at the end of
 	// filter.
@@ -29,37 +27,7 @@ public class FourPartHarmony {
 	// // This function is to get the least movement concreteChord from the
 	// // previous given concreteChord, which should be used at the end of
 	// filter.
-	// public ConcreteChord mostCommonNotes(List<ConcreteChord> rawChords, int[]
-	// prevChordNotes) {
-	//
-	// int[] temp = new int[rawChords.size()];
-	// for (int i = 0; i < temp.length; i++) {
-	// temp[i] = 0;
-	// }
-	// int count = 0;
-	// for (ConcreteChord cc : rawChords) {
-	// for (int i = 0; i < 4; i++) {
-	// for (int j = 0; j < 4; j++) {
-	// if (cc.getNotes(i) == prevChordNotes[j]) {
-	// temp[count]++;
-	// }
-	// }
-	// }
-	// }
-	//
-	// int index = 0;
-	// int max = temp[0];
-	// for (int i = 0; i < temp.length; i++) {
-	// if (temp[i] > max) {
-	// max = temp[i];
-	// index = i;
-	// }
-	// }
-	//
-	// return rawChords.get(index);
-	//
-	// }
-	//
+
 	// // Third repetition filter demo. "third" means third note of this chord,
 	// // which is currChord.notes.get(1). More details to be added, not allow
 	// any
@@ -202,7 +170,7 @@ public class FourPartHarmony {
 	}
 
 	// Similar to previous one
-	public List<int[]> getRawSeventhChords(int[] NoteList, int inversion, int lowerBound, int upperBound) {
+	public List<int[]> getRawSeventhOrNinthChords(int[] NoteList, int inversion, int lowerBound, int upperBound) {
 
 		List<Integer> rootNotes = new ArrayList<Integer>();
 		List<Integer> thirdNotes = new ArrayList<Integer>();
@@ -278,4 +246,5 @@ public class FourPartHarmony {
 		}
 		return rawList;
 	}
+
 }
