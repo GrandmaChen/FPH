@@ -6,11 +6,29 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NoteList {
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-	public int[] getRawNotes(String root, String type) throws NumberFormatException, IOException {
+public class ListGetter {
 
-		List<Integer> notes = new ArrayList<>();
+	public ObservableList<String> getChordList() throws IOException {
+
+		ObservableList<String> chords = FXCollections.observableArrayList();
+
+		String str = "";
+		BufferedReader br = new BufferedReader(new FileReader("Chords.md"));
+
+		while ((str = br.readLine()) != null) {
+			chords.add(str);
+			br.readLine();
+		}
+		br.close();
+		return chords;
+	}
+
+	public int[] getNotesList(String root, String type) throws NumberFormatException, IOException {
+
+		List<Integer> notes = new ArrayList<Integer>();
 		BufferedReader br = new BufferedReader(new FileReader("Notes.md"));
 		String str = "";
 

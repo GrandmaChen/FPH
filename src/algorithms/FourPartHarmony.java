@@ -3,7 +3,6 @@ package algorithms;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
 public class FourPartHarmony {
@@ -11,94 +10,10 @@ public class FourPartHarmony {
 	public FourPartHarmony() {
 	}
 
-	// // This function is to get the least movement concreteChord from the
-	// // previous given concreteChord, which should be used at the end of
-	// filter.
-	// public ConcreteChord leastMovement(List<ConcreteChord> rawChords, int[]
-	// prevChordNotes) {
-	// return null;
-	// }
-	//
-	// // Get a random concreteChord from the list.
-	// public ConcreteChord randomChord(List<ConcreteChord> rawChords) {
-	// return rawChords.get(new Random().nextInt(rawChords.size()));
-	// }
-	//
-	// // This function is to get the least movement concreteChord from the
-	// // previous given concreteChord, which should be used at the end of
-	// filter.
+	public List<int[]> getRawTriads(int[] NoteList, int inversion) {
 
-	// // Third repetition filter demo. "third" means third note of this chord,
-	// // which is currChord.notes.get(1). More details to be added, not allow
-	// any
-	// // kinds of thirds repetition by now.
-	// public void notAllowThirdRepetitionFilter(List<ConcreteChord> rawChords,
-	// int third) {
-	//
-	// for (int i = 0; i < rawChords.size(); i++) {
-	// int count = 0;
-	// for (int j = 0; j < 4; j++) {
-	// if (rawChords.get(i).getNotes(j) % 12 == third) {
-	// count++;
-	// }
-	// }
-	// if (count == 2) {
-	// rawChords.remove(i);
-	// i--;
-	// }
-	// }
-	// }
-	//
-	// // Not allow unison filter, which is not allowed by default
-	// public void notAlloweUnisonFilter(List<ConcreteChord> rawChords) {
-	// for (int i = 0; i < rawChords.size(); i++) {
-	// int[] notes = rawChords.get(i).getNotes();
-	// if (notes[0] == notes[1] || notes[1] == notes[2] || notes[2] == notes[3])
-	// {
-	// rawChords.remove(i);
-	// i--;
-	// }
-	// }
-	// }
-	//
-	// // Position filter
-	// public void positionFilter(List<ConcreteChord> rawChords, String
-	// positionType) {
-	//
-	// if (positionType.equals("close")) {
-	//
-	// for (int i = 0; i < rawChords.size(); i++) {
-	//
-	// int[] notes = rawChords.get(i).getNotes();
-	//
-	// // If any interval between 2 notes exceeds tritone
-	// if (notes[2] - notes[1] >= 6 || notes[3] - notes[2] >= 6) {
-	//
-	// rawChords.remove(i);
-	// i--;
-	// }
-	// }
-	// } else if (positionType.equals("open")) {
-	//
-	// for (int i = 0; i < rawChords.size(); i++) {
-	//
-	// int[] notes = rawChords.get(i).getNotes();
-	//
-	// // If any interval between 2 notes below tritone
-	// if (notes[2] - notes[1] < 6 || notes[3] - notes[2] < 6) {
-	//
-	// rawChords.remove(i);
-	// i--;
-	// }
-	// }
-	// }
-	// }
-
-	// "range" is an array with size 8. range[0] is the lower bound of bass,
-	// range[1] is is upper bound of bass, range[2] is the lower bound of tenor
-	// and so on. This array should be {24, 50, 33, 57, 41, 65, 45, 69}
-	// respectively by default.
-	public List<int[]> getRawTriads(int[] NoteList, int inversion, int lowerBound, int upperBound) {
+		int lowerBound = 21;
+		int upperBound = 108;
 
 		List<Integer> rootNotes = new ArrayList<Integer>();
 		List<Integer> thirdNotes = new ArrayList<Integer>();
@@ -170,7 +85,10 @@ public class FourPartHarmony {
 	}
 
 	// Similar to previous one
-	public List<int[]> getRawSeventhOrNinthChords(int[] NoteList, int inversion, int lowerBound, int upperBound) {
+	public List<int[]> getRawSeventhOrNinthChords(int[] NoteList, int inversion) {
+
+		int lowerBound = 21;
+		int upperBound = 108;
 
 		List<Integer> rootNotes = new ArrayList<Integer>();
 		List<Integer> thirdNotes = new ArrayList<Integer>();
