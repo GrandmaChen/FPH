@@ -8,7 +8,7 @@ import javafx.collections.ObservableList;
 
 public class Filter {
 
-	public boolean[] getParralelIntervals(int[] chord) {
+	public static boolean[] getParralelIntervals(int[] chord) {
 
 		boolean[] parralel = new boolean[12];
 		if (chord[1] - chord[0] == 7) {
@@ -50,7 +50,7 @@ public class Filter {
 		return parralel;
 	}
 
-	public void deleteCloseFilter(List<Chord> rawChords, boolean isAugFourth) {
+	public static void deleteCloseFilter(List<Chord> rawChords, boolean isAugFourth) {
 
 		int limit;
 
@@ -70,7 +70,7 @@ public class Filter {
 		}
 	}
 
-	public void deleteOpenFilter(List<Chord> rawChords, boolean isAugFourth) {
+	public static void deleteOpenFilter(List<Chord> rawChords, boolean isAugFourth) {
 
 		int limit;
 
@@ -90,7 +90,7 @@ public class Filter {
 		}
 	}
 
-	public ObservableList<Chord> onlyCloseFilter(List<Chord> rawChords, boolean isAugFourth) {
+	public static ObservableList<Chord> onlyCloseFilter(List<Chord> rawChords, boolean isAugFourth) {
 
 		ObservableList<Chord> result = FXCollections.observableArrayList();
 
@@ -114,7 +114,7 @@ public class Filter {
 
 	}
 
-	public ObservableList<Chord> onlyOpenFilter(List<Chord> rawChords, boolean isAugFourth) {
+	public static ObservableList<Chord> onlyOpenFilter(List<Chord> rawChords, boolean isAugFourth) {
 
 		ObservableList<Chord> result = FXCollections.observableArrayList();
 
@@ -139,7 +139,7 @@ public class Filter {
 
 	}
 
-	public void JumpFilter(List<Chord> rawChords, Chord prevChord) {
+	public static void JumpFilter(List<Chord> rawChords, Chord prevChord) {
 
 		for (int i = 0; i < rawChords.size(); i++) {
 			int[] currChord = rawChords.get(i).getNotes();
@@ -157,9 +157,9 @@ public class Filter {
 		}
 	}
 
-	// ÍâÉù²¿Òş·üÎå°Ë¶È
-	// Á½¸öÍâÉù²¿Í¬·½Ïò½øĞĞµ½8¶È»ò5¶È£¬¸ßÒô²¿Ò»Ìø½ø£¬¾Í´í
-	public void exteriorHiddenParralelFilterToPrev(List<Chord> rawChords, Chord prevChord) {
+	// å¤–å£°éƒ¨éšä¼äº”å…«åº¦
+	// ä¸¤ä¸ªå¤–å£°éƒ¨åŒæ–¹å‘è¿›è¡Œåˆ°8åº¦æˆ–5åº¦ï¼Œé«˜éŸ³éƒ¨ä¸€è·³è¿›ï¼Œå°±é”™
+	public static void exteriorHiddenParralelFilterToPrev(List<Chord> rawChords, Chord prevChord) {
 
 		int[] prevChordContent = prevChord.getNotes();
 
@@ -173,14 +173,14 @@ public class Filter {
 				continue;
 			}
 
-			// Í¬Ïò
+			// åŒå‘
 			if (!((currChordContent[0] - prevChordContent[0] < 0) && (currChordContent[3] - prevChordContent[3] < 0)
 					|| (currChordContent[0] - prevChordContent[0] > 0)
 							&& (currChordContent[3] - prevChordContent[3] > 0))) {
 				continue;
 			}
 
-			// ¸ßÒôÌø½ø
+			// é«˜éŸ³è·³è¿›
 			if (!(Math.abs(currChordContent[3] - prevChordContent[3]) > 3)) {
 				continue;
 			}
@@ -192,7 +192,7 @@ public class Filter {
 		return;
 	}
 
-	public void exteriorHiddenParralelFilterToNext(List<Chord> rawChords, Chord nextChord) {
+	public static void exteriorHiddenParralelFilterToNext(List<Chord> rawChords, Chord nextChord) {
 
 		// If not 5th/8th
 
@@ -206,14 +206,14 @@ public class Filter {
 
 			int[] currChordContent = rawChords.get(i).getNotes();
 
-			// Í¬Ïò
+			// åŒå‘
 			if (!((currChordContent[0] - nextChordContent[0] < 0) && (currChordContent[3] - nextChordContent[3] < 0)
 					|| (currChordContent[0] - nextChordContent[0] > 0)
 							&& (currChordContent[3] - nextChordContent[3] > 0))) {
 				continue;
 			}
 
-			// ¸ßÒôÌø½ø
+			// é«˜éŸ³è·³è¿›
 			if (!(Math.abs(currChordContent[3] - nextChordContent[3]) > 3)) {
 				continue;
 			}
@@ -224,7 +224,7 @@ public class Filter {
 	}
 
 	// Concurrent
-	public void concurrentFilter(List<Chord> rawChords, Chord prevChord) {
+	public static void concurrentFilter(List<Chord> rawChords, Chord prevChord) {
 
 		for (int i = 0; i < rawChords.size(); i++) {
 			int[] currChordContent = rawChords.get(i).getNotes();
@@ -242,7 +242,7 @@ public class Filter {
 	}
 
 	// No third repetition allowed
-	public void thirdRepetitonFilter(List<Chord> rawChords, int third) {
+	public static void thirdRepetitonFilter(List<Chord> rawChords, int third) {
 
 		for (int i = 0; i < rawChords.size(); i++) {
 
@@ -262,7 +262,7 @@ public class Filter {
 		return;
 	}
 
-	public void connectPartFilter(List<Chord> rawChords, Chord prevChord, int part) {
+	public static void connectPartFilter(List<Chord> rawChords, Chord prevChord, int part) {
 
 		for (int i = 0; i < rawChords.size(); i++) {
 
@@ -275,7 +275,7 @@ public class Filter {
 	}
 
 	// Parallel perfect 5th/8th filter
-	public void parralelFilter(List<Chord> rawChords, Chord prevChord) {
+	public static void parralelFilter(List<Chord> rawChords, Chord prevChord) {
 
 		boolean[] prevParralel = getParralelIntervals(prevChord.getNotes());
 
@@ -301,7 +301,7 @@ public class Filter {
 		return;
 	}
 
-	public ObservableList<Chord> rangeFilter(List<Chord> rawChords, int lowerBound, int upperBound) {
+	public static ObservableList<Chord> rangeFilter(List<Chord> rawChords, int lowerBound, int upperBound) {
 
 		ObservableList<Chord> result = FXCollections.observableArrayList();
 
@@ -316,7 +316,7 @@ public class Filter {
 		return result;
 	}
 
-	public void minor2ndFilter(List<Chord> rawChords) {
+	public static void minor2ndFilter(List<Chord> rawChords) {
 
 		for (int i = 0; i < rawChords.size(); i++) {
 			int[] chordContent = rawChords.get(i).getNotes();

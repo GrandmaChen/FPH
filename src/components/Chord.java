@@ -1,7 +1,6 @@
 package components;
 
 public class Chord {
-
 	private final String bass;
 	private final String tenor;
 	private final String alto;
